@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulário de Serviço</title>
+  <link rel="stylesheet" href="../css/stylectt.css">
+</head>
+<body>
+
+
+
+    <a href="#" class="logo">Portfolio.</a>
+
+        <nav class="navbar">
+            <a href="#" class="active">Home</a>
+            <a href="../html/Experiencias.html">Experiencias</a>
+            <a href="../html/Habilidades.html">Habilidades</a>
+            <a href="../html/contato.html">Contact</a>
+        </nav>
+
+        
+  <form onsubmit="return validarFormulario()">
+    <fieldset>
+      <legend>Formulário de Serviço</legend>
+
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="sobrenome">Sobrenome:</label>
+      <input type="text" id="sobrenome" name="sobrenome" required>
+
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" placeholder="(99) 99999-9999" pattern="\(\d{2}\) \d{5}-\d{4}" required>
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+      <label for="idioma">Idioma do serviço:</label>
+      <select id="idioma" name="idioma" required>
+        <option value="">Selecione</option>
+        <option>Inglês</option>
+        <option>Espanhol</option>
+        <option>Francês</option>
+        <option>Português (pt-br)</option>
+      </select>
+
+      <label for="arquivo">Upload de protótipo:</label>
+      <input type="file" id="arquivo" name="arquivo" accept=".pdf,.doc,.docx,.jpeg,.jpg,.png" required>
+
+      <label>Linguagens preferidas:</label>
+      <select name="linguagens[]" multiple size="4" required>
+        <option>JavaScript</option>
+        <option>Python</option>
+        <option>Java</option>
+        <option>Go</option>
+      </select>
+
+      <label>Banco de dados recomendado:</label>
+      <input type="radio" name="banco" value="MySQL" required> MySQL
+      <input type="radio" name="banco" value="PostgreSQL"> PostgreSQL
+      <input type="radio" name="banco" value="MongoDB"> MongoDB
+
+      <label for="turno">Turno preferido para reuniões:</label>
+      <select id="turno" name="turno" required>
+        <option value="">Selecione</option>
+        <option>Manhã</option>
+        <option>Tarde</option>
+        <option>Noite</option>
+      </select>
+
+      <label for="hora">Melhor horário sugerido:</label>
+      <input type="time" id="hora" name="hora" required>
+
+      <label for="data">Previsão de entrega desejada:</label>
+      <input type="date" id="data" name="data" required>
+
+      <div class="buttons">
+        <input type="reset" value="Limpar">
+        <input type="submit" value="Enviar">
+      </div>
+    </fieldset>
+  </form>
+
+  <script>
+    function validarFormulario() {
+      const arquivo = document.getElementById('arquivo').files[0];
+      const tiposPermitidos = ['application/pdf', 'application/msword', 
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'image/jpeg', 'image/png'];
+
+      if (arquivo && !tiposPermitidos.includes(arquivo.type)) {
+        alert("Formato de arquivo não permitido.");
+        return false;
+      }
+      return true;
+    }
+  </script>
+
+</body>
+</html>
